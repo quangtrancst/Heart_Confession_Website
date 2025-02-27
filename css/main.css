@@ -1,0 +1,382 @@
+/* Reset default margins and padding */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the design on the page */
+.wrapper {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #78b1c1d2; /* Dark gray background */
+}
+
+/* Container for heart and halo */
+.heart-container {
+  position: relative;
+  width: 100px;
+  height: 90px;
+}
+
+/* Heart shape */
+.heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 90px;
+  
+}
+
+.heart::before,
+.heart::after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: pink;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+  /* box-shadow: #000 0 0 10px; */
+}
+
+
+/* Heart-beat effect */
+.heart.beat {
+  animation: beat 1s infinite;
+
+}
+
+@keyframes beat {
+  0% {
+      transform: translate(-50%, -50%) scale(1);
+      filter: brightness(1);
+  }
+  50% {
+      transform: translate(-50%, -50%) scale(1.3);
+      filter: brightness(1.2);
+  }
+  100% {
+      transform: translate(-50%, -50%) scale(1);
+      filter: brightness(1);
+  }
+}
+
+/* Description styling */
+.description {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #fff;
+  text-shadow: #000 0 0 10px;
+  font-size: 1.5em;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  /* gap: 1rem; */
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.description.show {
+  opacity: 1;
+}
+/* Arrow indicator styling and animations */
+.arrow-indicator {
+  position: absolute;
+  top: 35vh;
+  font-size: 3em;
+  color: #fff;
+  opacity: 0;
+}
+
+/* Left arrow: start off-screen left and animate in plus continuous pulse */
+.arrow-indicator.left {
+  left: 0px;
+  animation: arrowInLeft 1.5s forwards;
+}
+
+/* Right arrow: start off-screen right and animate in plus continuous pulse */
+.arrow-indicator.right {
+  right: 0px;
+  animation: arrowInRight 1.5s forwards;
+}
+
+@keyframes arrowInLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(600px);
+    opacity: 1;
+  }
+}
+
+@keyframes arrowInRight {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-600px);
+    opacity: 1;
+  }
+}
+
+/* Continuous clicking (pulse) effect */
+@keyframes clickPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Halo effect */
+.halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px; /*Diameter of the halo circle*/
+  height: 40px;
+}
+
+.halo span {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: rgb(248, 237, 188);
+  border-radius: 50%;
+  /* transform-origin: center; */
+  animation: sparkle 2s infinite;
+}
+
+/* Animation for the halo effect */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Position and delay each sparkle */
+.halo span:nth-child(1) { transform: rotate(0deg) translate(80px); animation-delay: 0s; }
+.halo span:nth-child(2) { transform: rotate(30deg) translate(80px); animation-delay: 0.1667s; }
+.halo span:nth-child(3) { transform: rotate(60deg) translate(80px); animation-delay: 0.3334s; }
+.halo span:nth-child(4) { transform: rotate(90deg) translate(80px); animation-delay: 0.5s; }
+.halo span:nth-child(5) { transform: rotate(120deg) translate(80px); animation-delay: 0.6667s; }
+.halo span:nth-child(6) { transform: rotate(150deg) translate(80px); animation-delay: 0.8334s; }
+.halo span:nth-child(7) { transform: rotate(180deg) translate(80px); animation-delay: 1s; }
+.halo span:nth-child(8) { transform: rotate(210deg) translate(80px); animation-delay: 1.1667s; }
+.halo span:nth-child(9) { transform: rotate(240deg) translate(80px); animation-delay: 1.3334s; }
+.halo span:nth-child(10) { transform: rotate(270deg) translate(80px); animation-delay: 1.5s; }
+.halo span:nth-child(11) { transform: rotate(300deg) translate(80px); animation-delay: 1.6667s; }
+.halo span:nth-child(12) { transform: rotate(330deg) translate(80px); animation-delay: 1.8334s; }
+
+/* Text styling */
+h1 {
+font-family: 'Dancing Script', cursive;
+color: pink;
+font-size: 2em;
+margin-top: 30px;
+text-shadow: 0px 1px 1px #000;
+}
+
+/* Small heart symbol next to text */
+.small-heart {
+color: pink;
+font-size: 1em;
+vertical-align: middle;
+}
+
+/* Button container styling */
+.button-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Buttons design */
+.btn {
+  padding: 10px 20px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2em;
+  color: #fff;
+  background: linear-gradient(45deg, #ff6b6b, #f06595);
+  border: 2px solid #b8fac3;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover and active effects */
+.btn1:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn1:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn2 {
+  transition: all 0.5s ease;
+}
+
+/* Question text styling */
+.question {
+font-family: 'Dancing Script', cursive;
+color: rgb(255, 237, 166);
+text-shadow: 1px 2px 6px #000;;
+font-size: 2.2em;
+margin-top: 20px;
+margin-bottom: 10px;
+opacity: 0;
+transition: opacity 0.5s ease;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 600px) {
+/* Container for heart and halo */
+.heart-container {
+  position: relative;
+  width: 100px;
+  height: 90px;
+}
+
+/* Heart shape */
+.heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 90px;
+}
+
+.heart::before,
+.heart::after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 4rem;
+  height: 6rem;
+  background: pink;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart::after {
+  left: -0.9rem;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+/* Halo effect */
+.halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px; /*Diameter of the halo circle*/
+  height: 30px;
+}
+
+.halo span {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: rgb(248, 237, 188);
+  border-radius: 50%;
+  
+  /* transform-origin: center; */
+  animation: sparkle 2s infinite;
+}
+
+/* Animation for the halo effect */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Position and delay each sparkle */
+.halo span:nth-child(1) { transform: rotate(0deg) translate(80px); animation-delay: 0s; }
+.halo span:nth-child(2) { transform: rotate(30deg) translate(80px); animation-delay: 0.1667s; }
+.halo span:nth-child(3) { transform: rotate(60deg) translate(80px); animation-delay: 0.3334s; }
+.halo span:nth-child(4) { transform: rotate(90deg) translate(80px); animation-delay: 0.5s; }
+.halo span:nth-child(5) { transform: rotate(120deg) translate(80px); animation-delay: 0.6667s; }
+.halo span:nth-child(6) { transform: rotate(150deg) translate(80px); animation-delay: 0.8334s; }
+.halo span:nth-child(7) { transform: rotate(180deg) translate(80px); animation-delay: 1s; }
+.halo span:nth-child(8) { transform: rotate(210deg) translate(80px); animation-delay: 1.1667s; }
+.halo span:nth-child(9) { transform: rotate(240deg) translate(80px); animation-delay: 1.3334s; }
+.halo span:nth-child(10) { transform: rotate(270deg) translate(80px); animation-delay: 1.5s; }
+.halo span:nth-child(11) { transform: rotate(300deg) translate(80px); animation-delay: 1.6667s; }
+.halo span:nth-child(12) { transform: rotate(330deg) translate(80px); animation-delay: 1.8334s; }
+
+h1 {
+  font-size: 2em;
+  margin-top: 30px;
+}
+
+/* Arrow indicator styling and animations */
+.arrow-indicator {
+position: absolute;
+top: 38vh;
+font-size: 3em;
+color: #fff;
+opacity: 0;
+}
+
+/* Left arrow: start off-screen left and animate in plus continuous pulse */
+.arrow-indicator.left {
+left: 0px;
+animation: arrowInLeft 1.5s forwards;
+}
+
+/* Right arrow: start off-screen right and animate in plus continuous pulse */
+.arrow-indicator.right {
+right: 0px;
+animation: arrowInRight 1.5s forwards;
+}
+
+@keyframes arrowInLeft {
+0% {
+  transform: translateX(0);
+  opacity: 0;
+}
+100% {
+  transform: translateX(80px);
+  opacity: 1;
+}
+}
+
+@keyframes arrowInRight {
+0% {
+  transform: translateX(0);
+  opacity: 0;
+}
+100% {
+  transform: translateX(-80px);
+  opacity: 1;
+}
+}
+}
